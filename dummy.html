@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Time Slots Example</title>
+    
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Additional CSS for custom styling -->
+    <style>
+        .time-select {
+            overflow-y: auto;
+        }
+        
+        .time-select option {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Select a Time Slot</h1>
+        <select id="location" name="location" class="form-select cus_formselect_control time-select">
+            <option>Select location</option>
+        </select>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        var jsonData = {
+            "status": true,
+            "data": {
+                "timeSlots": [
+                    "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00",
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
+                    "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00",
+                    "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"
+                ]
+            },
+            "message": "Time Information"
+        };
+
+        var locationSelect = $("#location");
+        
+        $.each(jsonData.data.timeSlots, function(index, timeSlot) {
+            locationSelect.append($("<option>", {
+                value: timeSlot,
+                text: timeSlot
+            }));
+        });
+    });
+    </script>
+</body>
+</html>
